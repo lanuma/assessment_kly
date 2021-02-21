@@ -14,6 +14,7 @@ Route::group(['as' => 'admin.', 'prefix' => '/admin', 'middleware' => 'admin'], 
     Route::get('/', 'DashboardController@index')->name('dashboard');
 
     Route::group(['as' => 'data.', 'prefix' => '/data'], function() {
+        Route::get('/json', 'AdminController@json')->name('json');
         Route::get('/', 'AdminController@index')->name('index');
     });
 

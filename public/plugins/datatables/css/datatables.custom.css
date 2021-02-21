@@ -38,6 +38,8 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,
 .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover	{
     color: #fff !important;				/*text-white*/
+    background: #667eea !important;		/*bg-indigo-500*/
+    opacity: 0.5;
 }
 
 /*Pagination Buttons - Hover */
@@ -64,4 +66,10 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
 
 table.dataTable tr > td {
     text-align: center;
+}
+
+table.dataTable {
+    width:100%;
+    padding-top: 1em; 
+    padding-bottom: 1em;
 }
