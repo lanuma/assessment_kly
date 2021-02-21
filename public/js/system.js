@@ -81,7 +81,7 @@ function responded(notification = null) {
 
       iziToast[notification.type]({
         title: defaultFor(notification.title, ''),
-        message: notification.content,
+        message: defaultFor(notification.content, ''),
         position: 'topCenter',
         timeout: 3001,
         layout: (objHasProp(notification, 'title') ? 2 : 1)

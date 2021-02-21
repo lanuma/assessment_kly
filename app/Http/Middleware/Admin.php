@@ -17,8 +17,8 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() == true) {
-            $this->admin = Auth::user();
+        if (Auth::guard('admin')->check() == true) {
+            $this->admin = Auth::guard('admin')->user();
 
             view()->share('admin', $this->admin);
 

@@ -18,8 +18,8 @@ class Authentication
     public function handle(Request $request, Closure $next)
     {
         if ($request->is(['auth', 'auth/*'])) {
-            if (Auth::check() == true) {
-                return redirect()->route('admmin.index');
+            if (Auth::guard('admin')->check() == true) {
+                return redirect()->route('admin.index');
             }
         }
 

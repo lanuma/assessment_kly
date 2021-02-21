@@ -32,14 +32,13 @@ $('form.ajax').submit(function (e) {
             redirect(response.data.redirect_to, 3000);
         }  
     }).fail(function (request, status, error) {
-        // console.log(request);
-    //   if (objHasProp(request, 'responseJSON.data.notification')) {
-    //     responded(request.responseJSON.data.notification);
-    //   }
+        if (objHasProp(request, 'responseJSON.data.notification')) {
+            responded(request.responseJSON.data.notification);
+        }
   
-    //   if (objHasProp(request, 'responseJSON.data.redirect_to')) {
-    //     redirect(request.responseJSON.data.redirect_to, 3000);
-    //   }
+        if (objHasProp(request, 'responseJSON.data.redirect_to')) {
+            redirect(request.responseJSON.data.redirect_to, 3000);
+        }
   
     //   if (objHasProp(request, 'status') && request.status == 429) {
     //     Codebase.helpers('notify', {
