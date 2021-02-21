@@ -11,7 +11,11 @@ Route::group(['as' => 'auth.', 'prefix' => '/auth', 'middleware' => 'authenticat
 });
 
 Route::group(['as' => 'admin.', 'prefix' => '/admin', 'middleware' => 'admin'], function () {
-    Route::get('/', 'AdminController@index')->name('index');
+    Route::get('/', 'DashboardController@index')->name('dashboard');
+
+    Route::group(['as' => 'data.', 'prefix' => '/data'], function() {
+        Route::get('/', 'AdminController@index')->name('index');
+    });
 
     Route::get('/logout', 'AuthController@logout')->name('logout');
 });
