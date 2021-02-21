@@ -24,57 +24,21 @@ class AdminTable extends Table
         $table = Table::of($this->query());
         $table->addIndexColumn();
 
-        // $table->setRowClass(function (Superuser $model) {
-        //     return !$model->is_active ? 'table-danger' : '';
-        // });
-
-        // $table->editColumn('is_active', function (Superuser $model) {
-        //     $active = '<i class="fa fa-lg fa-check text-success"></i>';
-        //     $inactive = '<i class="fa fa-lg fa-close text-danger"></i>';
-
-        //     return ($model->is_active) ? $active : $inactive;
-        // });
-
-        // $table->editColumn('image', function (Superuser $model) {
-        //     return "
-        //       <a class=\"img-link img-link-zoom-in img-lightbox\" href=\"{$model->img}\">
-        //         <img class=\"img-fluid img-table\" src=\"{$model->img}\">
-        //       </a>
-        //     ";
-        // });
 
         $table->addColumn('action', function (Admin $model) {
             // $view = route('superuser.account.superuser.show', $model);
             // $edit = route('superuser.account.superuser.edit', $model);
             // $destroy = route('superuser.account.superuser.destroy', $model);
-            // $restore = route('superuser.account.superuser.restore', $model);
 
-            $view = '';
-            $edit = '';
-            $destroy = '';
-            $restore = '';
+            $view = 'view';
+            $edit = 'edit';
+            $destroy = 'destroy';
 
-            // if ($model->is_active) {
-            //     $toggle = "
-            //         <a href=\"javascript:deleteConfirmation('{$destroy}')\">
-            //             <button type=\"button\" class=\"btn btn-sm btn-circle btn-alt-danger\" title=\"Delete\">
-            //                 <i class=\"fa fa-times\"></i>
-            //             </button>
-            //         </a>
-            //     ";
-            // } else {
-            //     $toggle = "
-            //         <a href=\"javascript:restoreConfirmation('{$restore}')\">
-            //             <button type=\"button\" class=\"btn btn-sm btn-circle btn-alt-info\" title=\"Restore\">
-            //                 <i class=\"fa fa-undo\"></i>
-            //             </button>
-            //         </a>
-            //     ";
-            // }
-
-            // if (Auth::guard('superuser')->user()->hasRole('SuperAdmin') == false) {
-            //     $toggle = '';
-            // }
+            if ($model->username == 'admin') {
+                $delete = $destroy;
+            } else {
+                $delete = '';
+            }
 
             return "
                 <a href=\"{$view}\">
@@ -87,11 +51,10 @@ class AdminTable extends Table
                         <i class=\"fa fa-pencil\"></i>
                     </button>
                 </a>
+                {$delete}
             ";
-            // $toggle
         });
-        
-        // $table->rawColumns(['is_active', 'image', 'action']);
+
         $table->rawColumns(['action']);
 
         return $table->make(true);
