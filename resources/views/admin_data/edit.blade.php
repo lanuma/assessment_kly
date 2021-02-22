@@ -24,13 +24,14 @@
 <div id="block-alert"></div>
 
 <div class="border shadow bg-white px-5 py-4 my-4 text-gray-600">
-  <form class="ajax" data-action="{{ route('admin.data.store') }}" data-method="POST">
+  <form class="ajax" data-action="{{ route('admin.data.update', $obj) }}" data-method="POST">
+    @method('PUT')
     <div class="flex">
       <div class="w-2/5 p-4 text-right">
         <span class="align-middle text-gray-500 font-semibold">Username <span class="text-red-500 font-semibold">*</span></span>
       </div>
       <div class="w-3/5 p-4 text-left">
-        <input name="username" type="text" class="appearance-none outline-none block border rounded px-4 py-1 w-2/3 mask1">
+        <input name="username" type="text" class="appearance-none outline-none block border rounded px-4 py-1 w-2/3 mask1" value="{{ $obj->username }}" disabled>
       </div>
     </div>
     <div class="flex">
@@ -54,7 +55,7 @@
         <span class="align-middle text-gray-500 font-semibold">Name</span>
       </div>
       <div class="w-3/5 p-4 text-left">
-        <input name="name" type="text" class="appearance-none outline-none block border rounded px-4 py-1 w-2/3">
+        <input name="name" type="text" class="appearance-none outline-none block border rounded px-4 py-1 w-2/3" value="{{ $obj->name }}">
       </div>
     </div>
 

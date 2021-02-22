@@ -28,7 +28,7 @@ class AdminController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'username' => 'required|string|unique:admins,username',
-            'password' => 'required|required_with:current_password|min:8|max:16|confirmed',
+            'password' => 'required|required_with:password_confirmation|min:8|max:16|confirmed',
             'name' => 'nullable|string',
         ]);
 
@@ -77,5 +77,67 @@ class AdminController extends Controller
         $data['obj'] = Admin::findOrFail($id);
 
         return view('admin_data.edit', $data);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'password' => 'nullable|required_with:password_confirmation|string|min:8|max:16|confirmed',
+            'name' => 'nullable|string'
+        ]);
+
+        if ($validator->fails()) {
+            $response['notification'] = [
+                'alert' => 'block',
+                'type' => 'red',
+                'title' => 'Error',
+                'content' => $validator->errors()->all(),
+            ];
+
+            return $this->response(400, $response);
+        }
+
+        if ($validator->passes()) {
+            $admin = Admin::find($id);
+
+            if ($admin == NULL) {
+                abort(404);
+            }
+
+            // $admin->username = $request->username;
+            if (!empty($request->password)) {
+                $admin->password = Hash::make($request->password);
+            }
+
+            $admin->name = $request->name;
+
+            if ($admin->save()) {
+                $response['notification'] = [
+                    'alert' => 'toast',
+                    'type' => 'success',
+                    'title' => 'Success',
+                    'content' => 'Redirecting...',
+                ];
+
+                $response['redirect_to'] = route('admin.data.show', $admin->id);
+
+                return $this->response(200, $response);
+            }
+        }
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        $admin = Admin::find($id);
+
+        if ($admin == NULL) {
+            abort(404);
+        }
+
+        if ($admin->delete()) {
+            $response['redirect_to'] = '#datatable';
+
+            return $this->response(200, $response);
+        }
     }
 }

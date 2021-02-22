@@ -8,8 +8,6 @@ $('form.ajax').submit(function (e) {
   
     let data = new FormData(this);
 
-    console.log(data)
-
     $.ajax({
       url: $(this).data('action'),
       data: data,
@@ -40,15 +38,9 @@ $('form.ajax').submit(function (e) {
             redirect(request.responseJSON.data.redirect_to, 3000);
         }
   
-    //   if (objHasProp(request, 'status') && request.status == 429) {
-    //     Codebase.helpers('notify', {
-    //       align: 'right',
-    //       from: 'top',
-    //       type: 'warning',
-    //       icon: 'fa fa-ban mr-5',
-    //       message: "Too many attempts, try again later"
-    //     });
-    //   }
+        // if (objHasProp(request, 'status') && request.status == 429) {
+        //     message: "Too many attempts, try again later"
+        // }
     });
   
     $(this).find("button[type='submit']").prop('disabled', false);
