@@ -4,6 +4,7 @@
 
 @section('content')
 <h1 class="text-3xl">Admin</h1>
+<h5 class="text-sm text-gray-400">(CRUD with DB)</h5>
 
 <nav class="border shadow bg-white px-5 py-4 my-4 text-gray-600 text-sm">
   <ol class="list-none p-0 inline-flex">
