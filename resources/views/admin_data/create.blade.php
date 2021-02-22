@@ -23,34 +23,34 @@
 <div class="border shadow bg-white px-5 py-4 my-4 text-gray-600">
   <form class="ajax" data-action="{{ route('admin.data.store') }}" data-method="POST">
     <div class="flex">
-      <div class="w-2/5 p-4 text-right">
+      <div class="w-1/4 p-4 text-right">
         <span class="align-middle text-gray-500 font-semibold">Username <span class="text-red-500 font-semibold">*</span></span>
       </div>
-      <div class="w-3/5 p-4 text-left">
+      <div class="w-3/4 p-4 text-left">
         <input name="username" type="text" class="appearance-none outline-none block border rounded px-4 py-1 w-2/3 mask1">
       </div>
     </div>
     <div class="flex">
-      <div class="w-2/5 p-4 text-right">
+      <div class="w-1/4 p-4 text-right">
         <span class="align-middle text-gray-500 font-semibold">Password <span class="text-red-500 font-semibold">*</span></span>
       </div>
-      <div class="w-3/5 p-4 text-left">
+      <div class="w-3/4 p-4 text-left">
         <input name="password" type="password" class="appearance-none outline-none block border rounded px-4 py-1 w-2/3">
       </div>
     </div>
     <div class="flex">
-      <div class="w-2/5 p-4 text-right">
+      <div class="w-1/4 p-4 text-right">
         <span class="align-middle text-gray-500 font-semibold">Password Confirmation <span class="text-red-500 font-semibold">*</span></span>
       </div>
-      <div class="w-3/5 p-4 text-left">
+      <div class="w-3/4 p-4 text-left">
         <input name="password_confirmation" type="password" class="appearance-none outline-none block border rounded px-4 py-1 w-2/3">
       </div>
     </div>
     <div class="flex">
-      <div class="w-2/5 p-4 text-right">
+      <div class="w-1/4 p-4 text-right">
         <span class="align-middle text-gray-500 font-semibold">Name</span>
       </div>
-      <div class="w-3/5 p-4 text-left">
+      <div class="w-3/4 p-4 text-left">
         <input name="name" type="text" class="appearance-none outline-none block border rounded px-4 py-1 w-2/3">
       </div>
     </div>

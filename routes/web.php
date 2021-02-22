@@ -14,6 +14,9 @@ Route::group(['as' => 'admin.', 'prefix' => '/admin', 'middleware' => 'admin'], 
     Route::get('/', 'DashboardController@index')->name('dashboard');
 
     Route::resource('data', 'AdminController');
+    
+    Route::resource('people', 'PeopleController');
+
 
     Route::get('/logout', 'AuthController@logout')->name('logout');
 });
