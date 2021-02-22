@@ -47,7 +47,7 @@ class AuthController extends Controller
                 'content' => 'Redirecting...',
             ];
 
-            $response['redirect_to'] = route('admin.index');
+            $response['redirect_to'] = route('admin.dashboard');
 
             return $this->response(200, $response);
         }

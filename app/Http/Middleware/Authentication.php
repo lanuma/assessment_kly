@@ -19,7 +19,7 @@ class Authentication
     {
         if ($request->is(['auth', 'auth/*'])) {
             if (Auth::guard('admin')->check() == true) {
-                return redirect()->route('admin.index');
+                return redirect()->route('admin.dashboard');
             }
         }
 

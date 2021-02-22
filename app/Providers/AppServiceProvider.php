@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Providers\ResourceRegistrar;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $registrar = new ResourceRegistrar($this->app['router']);
+
+        $this->app->bind('Illuminate\Routing\ResourceRegistrar', function () use ($registrar) {
+            return $registrar;
+        });
+
     }
 }

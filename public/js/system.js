@@ -64,20 +64,32 @@ function log(str) {
 }
 
 function responded(notification = null) {
-  /**
-   * notification = {
-   *  'alert => 'toast',
-   *  'type' => '',
-   *  'content => string|array
-   * }
-   */
-
+  /** (toast)
+    * notification = {
+    *  'alert => 'toast',
+    *  'type' => 'show|info|success|warning|error|question',
+    *  'title' => nullable|string
+    *  'content => required|string|array
+    * }
+    **/
+  
+  /** (block)
+    * div#block-alert is required
+    * 
+    * notification = {
+    *  'alert => 'block',
+    *  'type' => 'gray|blue|green|yellow|red|...',
+    *  'title' => required|string
+    *  'content => required|string|array
+    * }
+    **/
+  
   if (notification == null) {
     return;
   }
 
   switch (notification.alert) {
-    case 'toast' :
+    case 'toast':
 
       iziToast[notification.type]({
         title: defaultFor(notification.title, ''),
@@ -88,6 +100,38 @@ function responded(notification = null) {
       });
 
       break;
+
+    case 'block':
+
+      let notif_content = Array.isArray(notification.content) ? notification.content.join("<br>") : notification.content;
+
+      let html =
+        '<div class="border shadow border-' + notification.type + '-200 py-3 px-5 bg-' + notification.type + '-100 text-' + notification.type + '-900 text-sm " role="alert">' +
+        '  <div class="text-sm font-bold flex justify-between">' +
+        '  <span id="block-alert-title">' + notification.title + '</span>' +
+        '  <button class="w-4" type="button" data-dismiss="alert" aria-label="Close" onclick="$(this).parentsUntil(\'div#block-alert\').remove()">' +
+        '    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">' +
+        '      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />' +
+        '    </svg>' +
+        '  </button>' +
+        '  </div>' +
+        '  <div id="block-alert-content" class="text-sm">' +
+              notif_content +
+        '  </div>' +
+        '</div>'
+      ;
+
+      let alert_block = $('div#block-alert')
+
+      if (alert_block.length < 1) {
+        log('div#block-alert is missing')
+      } else {
+        $('div#block-alert').html('');
+        $('div#block-alert').append(html).hide().show('normal');
+      }
+
+      break;
+
   }
   
 }

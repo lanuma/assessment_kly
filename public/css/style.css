@@ -5,6 +5,10 @@ html, body {
     font-family: 'Source Sans Pro';
 }
 
+button:focus {
+    outline: none;
+}
+
 button:disabled {
     opacity: .5;
 }

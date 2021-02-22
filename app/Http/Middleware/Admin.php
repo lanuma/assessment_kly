@@ -25,6 +25,6 @@ class Admin
             return $next($request);
         }
 
-        return redirect()->route('auth.index');
+        return redirect()->route('auth.dashboard');
     }
 }

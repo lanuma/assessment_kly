@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>KLY Assessment - @yield('title')</title>
     <link rel="shortcut icon" href="{{ asset('icon.png') }}">
-    @stack('plugin-styles')
     @include('asset.css')
+    @stack('plugin-styles')
     @stack('styles')
   </head>
   <body class="bg-gray-100">

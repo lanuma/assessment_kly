@@ -8,7 +8,6 @@
     <title>KLY Assessment</title>
     <link rel="shortcut icon" href="{{ asset('icon.png') }}">
     @include('asset.css')
-    @include('asset.plugin.iziToast')
     @stack('plugin-styles')
   </head>
   <body class="bg-gradient-to-br from-indigo-600 via-pink-500 to-yellow-400 flex">
@@ -20,7 +19,7 @@
               <label class="block uppercase tracking-widest text-gray-600 text-xs font-bold mb-2" for="username">
                 Username
               </label>
-              <input class="appearance-none outline-none block w-full border rounded py-3 px-4 mb-3" name="username" id="username" type="text">
+              <input class="appearance-none outline-none block w-full border rounded py-3 px-4 mb-3 mask1" name="username" id="username" type="text">
             </div>
           </div>
           <div class="-mx-3 md:flex mb-3">

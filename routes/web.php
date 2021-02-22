@@ -13,10 +13,7 @@ Route::group(['as' => 'auth.', 'prefix' => '/auth', 'middleware' => 'authenticat
 Route::group(['as' => 'admin.', 'prefix' => '/admin', 'middleware' => 'admin'], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
 
-    Route::group(['as' => 'data.', 'prefix' => '/data'], function() {
-        Route::get('/json', 'AdminController@json')->name('json');
-        Route::get('/', 'AdminController@index')->name('index');
-    });
+    Route::resource('data', 'AdminController');
 
     Route::get('/logout', 'AuthController@logout')->name('logout');
 });

@@ -18,13 +18,17 @@
 </nav>
 
 <div class="border shadow bg-white px-5 py-4 my-4 text-gray-600">
+  <a href="{{ route('admin.data.create') }}">
+    <button class="px-5 py-1 rounded bg-indigo-500 text-white mb-6">Create</button>
+  </a>
+
   <table id="datatable" class="stripe hover">
     <thead>
       <tr>
-        <th data-priority="1">#</th>
-        <th data-priority="2">Username</th>
-        <th data-priority="3">Name</th>
-        <th data-priority="4">Action</th>
+        <th>#</th>
+        <th>Username</th>
+        <th>Name</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
