@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Admin')
+@section('title', 'People')
 
 @section('content')
 <h1 class="text-3xl">People</h1>
@@ -27,17 +27,15 @@
     <thead>
       <tr>
         <th>#</th>
-        <th>Name</th>
-        <th>Email</th>
+        <th>Filename</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
       @foreach($peoples as $people)
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>{{ $loop->iteration }}</td>
+        <td>{{ $people }}</td>
         <td>
           <span class="inline-flex">
             <a href="{{ route('admin.people.show', $people) }}" title="View">

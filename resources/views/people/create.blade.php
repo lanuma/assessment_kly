@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Admin')
+@section('title', 'People')
 
 @section('content')
 <h1 class="text-3xl">People</h1>
@@ -43,7 +43,30 @@
         <span class="align-middle text-gray-500 font-semibold">Date of Birth</span>
       </div>
       <div class="w-3/4 p-4 text-left">
-        <input name="dob" type="text" class="appearance-none outline-none block border rounded px-4 py-1 w-2/3">
+        {{-- date --}}
+        <select name="dob_date" class="select2 appearance-none outline-none px-4 py-1 w-1/12" data-placeholder="Date">
+          <option></option>
+          @for ($i = 1; $i < 31; $i++)
+          <option value="{{ $i }}">{{ $i }}</option>
+          @endfor
+        </select>
+
+        {{-- month --}}
+        <select name="dob_month" class="select2 appearance-none outline-none px-4 py-1 w-1/6" data-placeholder="Month">
+          <option></option>
+          @foreach(months() as $month)
+          <option value="{{ $loop->iteration }}">{{ $month }}</option>
+          @endforeach
+        </select>
+
+        {{-- year --}}
+        <select name="dob_year" class="select2 appearance-none outline-none px-4 py-1 w-1/6" data-placeholder="Year">
+          <option></option>
+          @for ($i = 1900; $i <= date('Y'); $i++)
+          <option value="{{ $i }}">{{ $i }}</option>
+          @endfor
+        </select>
+
       </div>
     </div>
     <div class="flex">
@@ -59,7 +82,11 @@
         <span class="align-middle text-gray-500 font-semibold">Gender</span>
       </div>
       <div class="w-3/4 p-4 text-left">
-        <input name="gender" type="text" class="appearance-none outline-none block border rounded px-4 py-1 w-2/3">
+        <select name="gender" class="select2 appearance-none outline-none px-4 py-1 w-2/3" data-placeholder="Gender">
+          <option></option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
       </div>
     </div>
     <div class="flex">
@@ -67,7 +94,7 @@
         <span class="align-middle text-gray-500 font-semibold">Image</span>
       </div>
       <div class="w-3/4 p-4 text-left">
-        <input name="image" type="file" class="appearance-none outline-none block border rounded px-4 py-1 w-2/3">
+        <input type="file" id="image" name="image" data-max-file-size="2000" accept="image/png, image/jpeg">
       </div>
     </div>
 
@@ -82,6 +109,45 @@
 </div>
 @endsection
 
+@include('asset.plugin.bootstrap-fileinput')
+@include('asset.plugin.select2')
+
 @push('scripts')
 <script src="{{ asset('js/form.js') }}"></script>
+<script>
+  $(document).ready(function () {
+    $('.select2[name=gender]').select2({
+      minimumResultsForSearch: -1
+    });
+
+    $('.select2[name^=dob]').select2();
+
+    $('#image').fileinput({
+      theme: 'explorer-fa',
+      browseOnZoneClick: true,
+      showCancel: false,
+      showClose: false,
+      showUpload: false,
+      browseLabel: '',
+      removeLabel: '',
+      mainClass: 'hidden',
+      layoutTemplates: { 
+        modal: '',
+        modalMain: '',
+        caption: '',
+      },
+      fileActionSettings: {
+        showDrag: false,
+        showZoom: false,
+        showRemove: false
+      },
+    });
+
+    $('.file-input').addClass('w-2/3');
+
+    $('button[type=reset]').click(function () {
+      $('.select2').val('').trigger('change');
+    })
+  })
+</script>
 @endpush
