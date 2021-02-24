@@ -83,13 +83,13 @@
     </div>
     <div class="w-3/4 p-4 text-left">
       <img class="w-1/4" src="{{ \App\Helper\TXT::getImage($people[5]) }}" alt="{{ $people[5] }}">
-      <span class="align-middle">{{ $people[5] }}</span>
+      {{-- <span class="align-middle">{{ $people[5] }}</span> --}}
     </div>
   </div>
 
   <div class="flex justify-between flex mt-10 mb-2">
     <a href="{{ route('admin.people.index') }}" class="flex rounded bg-gray-400 px-5 py-1 text-white mr-4">Back</a>
-    <a href="{{ route('admin.people.edit', $people) }}" class="flex rounded bg-yellow-400 px-5 py-1 text-white">Edit</a>
+    <a href="{{ route('admin.people.edit', $filename) }}" class="flex rounded bg-yellow-400 px-5 py-1 text-white">Edit</a>
   </div>
 </div>
 @endsection

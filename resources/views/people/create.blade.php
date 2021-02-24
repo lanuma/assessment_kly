@@ -54,8 +54,8 @@
         {{-- month --}}
         <select name="dob_month" class="select2 appearance-none outline-none px-4 py-1 w-1/6" data-placeholder="Month">
           <option></option>
-          @foreach(months() as $month)
-          <option value="{{ $loop->iteration }}">{{ $month }}</option>
+          @foreach(months() as $i => $month)
+          <option value="{{ $i }}">{{ $month }}</option>
           @endforeach
         </select>
 
