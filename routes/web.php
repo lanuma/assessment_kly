@@ -15,6 +15,7 @@ Route::group(['as' => 'admin.', 'prefix' => '/admin', 'middleware' => 'admin'], 
 
     Route::resource('data', 'AdminController');
     
+    Route::get('/people/thank_you', 'PeopleController@thank_you')->name('people.thank_you');
     Route::resource('people', 'PeopleController');
 
 

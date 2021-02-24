@@ -82,10 +82,11 @@ class PeopleController extends Controller
                 'alert' => 'toast',
                 'type' => 'success',
                 'title' => 'Success',
-                'content' => 'Redirecting...',
+                // 'content' => 'Redirecting...',
             ];
 
-            $response['redirect_to'] = route('admin.people.show', $txt_filename);
+            // $response['redirect_to'] = route('admin.people.show', $txt_filename);
+            $response['redirect_to'] = route('admin.people.thank_you', ['to' => $txt_filename]);
 
             return $this->response(200, $response);
         }
@@ -195,6 +196,15 @@ class PeopleController extends Controller
 
             return $this->response(500, $response);
         }
+    }
+
+    public function thank_you(Request $request)
+    {
+        if ($request->to) {
+            return view('people.thank_you');
+        }
+
+        abort(404);
     }
     
 }
