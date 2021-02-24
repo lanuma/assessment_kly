@@ -1,3 +1,5 @@
-!peoples/init
 !public/
 !.gitignore
+
+!peoples/init
+peoples/*
